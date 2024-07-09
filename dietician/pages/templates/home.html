@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nutritionist and Dietitian</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        h1 {
+            margin: 40px 0;
+            font-size: 2.5em;
+            color: #ff5733;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: linear-gradient(135deg, #ff0080, #ff8c00);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+        }
+        .card h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        .card p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+        .card button {
+            background-color: #ff0080;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .card button:hover {
+            background-color: #ff8c00;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Nutritionist and Dietitian 🥗</h1>
+    <div class="container">
+        <div class="card">
+            <h2>Introducing NutriScan: Your Meal Companion</h2>
+            <p>"NutriScan: Capture, Analyze, Thrive. Effortlessly track your meals with AI-powered image analysis, saving detailed nutrient content to empower your health journey."</p>
+            <a href="./nutriscan"><button>NutriScan</button></a>
+        </div>
+        <div class="card">
+            <h2>Packaged Prodigy: Enlightened Insights on Packaged Foods</h2>
+            <p>"Packaged Prodigy simplifies understanding packaged foods. Snap a pic of the ingredients, add details like quantity, and receive enlightening insights instantly, helping you make informed choices."</p>
+            <a href="./pack"><button>Packaged Prodigy</button></a>
+        </div>
+        <div class="card">
+            <h2>AI Diet Planner: Personalized Nutrition, Redefined</h2>
+            <p>"AI Diet Planner redefines personalized nutrition. Upload your blood tests, share your details, and receive a custom diet plan tailored to your unique needs, empowering you to achieve your health goals effectively."</p>
+            <a href="./dietplan"><button>AI Diet Planner</button></a>
+        </div>
+    </div>
+</body>
+</html>

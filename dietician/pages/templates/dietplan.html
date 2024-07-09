@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personalized AI Diet Planner</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        h1 {
+            margin: 40px 0;
+            font-size: 2.5em;
+            color: #ff5733;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            background-color: #161b22;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .sidebar:hover {
+            transform: translateX(-10px);
+        }
+
+        .main {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        .form-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #ff8c00;
+        }
+
+        .form-section p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"],
+        select,
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #21262d;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        input[type="file"]:hover,
+        select:hover,
+        input[type="text"]:hover,
+        input[type="number"]:hover,
+        textarea:hover {
+            background-color: #30363d;
+        }
+
+        .submit-button {
+            background-color: #ff5733;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #ff8c00;
+            transform: scale(1.05);
+        }
+
+        .output {
+            background-color: #161b22;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .sidebar .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5em;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .sidebar .close-btn:hover {
+            color: #ff8c00;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const formData = new FormData(document.getElementById('nutriScanForm'));
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // document.getElementById('outputText').innerHTML = response.message;  // Display the response
+                    $('#outputText').text(response.message);
+                    $('#outputContainer').show();
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Your Personalized AI Diet Planner</h1>
+        <form id="nutriScanForm" method="POST" enctype="multipart/form-data" onsubmit="submitForm(event)">
+            {% csrf_token %}
+            <div class="form-section">
+                <h2>Tell us about yourself:</h2>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="1" required>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" name="height" min="1" required>
+                <label for="weight">Weight (kgs):</label>
+                <input type="number" id="weight" name="weight" min="1" required>
+                <label for="activity-level">Activity Level:</label>
+                <select id="activity-level" name="activity-level">
+                    <option value="sedentary">Sedentary</option>
+                    <option value="lightly-active">Lightly Active</option>
+                    <option value="moderately-active">Moderately Active</option>
+                    <option value="very-active">Very Active</option>
+                </select>
+                <label for="allergies">Medical Conditions:</label>
+                <input type="text" id="allergies" name="allergies">
+            </div>
+            <div class="form-section">
+                <h2>Your Preferences and Goals:</h2>
+                <label for="preferences">Preferences:</label>
+                <textarea id="preferences" name="preferences" rows="4" required></textarea>
+                <label for="goals">Goals:</label>
+                <textarea id="goals" name="goals" rows="4" required></textarea>
+            </div>
+            <div class="form-section">
+                <h2>Your Report:</h2>
+                <p>Upload your Report File and Click on the Submit & Process Button</p>
+                <input type="file" accept=".pdf" name="report">
+            </div>
+            <button class="submit-button" type="submit">Submit</button>
+        </form>
+        <div class="form-section" id="outputContainer">
+            <h2>Diet:</h2>
+            <div class="output" ><p id="outputText"></p>
+                <!-- Output from backend will be displayed here -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

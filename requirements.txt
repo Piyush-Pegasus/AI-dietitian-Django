@@ -1,0 +1,9 @@
+Django
+python-dotenv
+pillow
+langchain
+langchain-community
+langchain-core
+google-generativeai 
+langchain-google-genai
+temp

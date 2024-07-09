@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing NutriScan: Your Meal Tracker Companion</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 20px 0;
+            font-size: 2.5em;
+            color: #ff5733;
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, #ff0080, #ff8c00);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .form-group input[type="file"] {
+            padding: 10px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .form-group input[type="file"]::-webkit-file-upload-button {
+            background-color: #ff5733;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .form-group input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: #ff8c00;
+        }
+
+        .form-group button {
+            background-color: #ff0080;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #ff8c00;
+        }
+
+        .output-container {
+            background: linear-gradient(135deg, #00f260, #0575e6);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #uploadedImage {
+            max-width: 100%;
+            max-height: 200px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        #outputText {
+            font-size: 1.2em;
+            color: #fff;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const output = document.getElementById('uploadedImage');
+                output.src = reader.result;
+                document.getElementById('outputContainer').style.display = 'block';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        function submitForm(event) {
+            event.preventDefault();
+            const formData = new FormData(document.getElementById('nutriScanForm'));
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // document.getElementById('outputText').innerHTML = response.message;  // Display the response
+                    $('#outputText').text(response.message);
+                    $('#outputContainer').show();
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Introducing NutriScan: Your Meal Tracker Companion</h1>
+    <div class="form-container">
+        <form id="nutriScanForm" method="POST" enctype="multipart/form-data" onsubmit="submitForm(event)" >
+            {%csrf_token%}
+            <div class="form-group">
+                <label for="inputPrompt">Input Prompt:</label>
+                <input type="text" id="inputPrompt" name="inputPrompt" required>
+            </div>
+            <div class="form-group">
+                <label for="inputImage">Choose an image...</label>
+                <input type="file" id="inputImage" name="inputImage" accept="image/*" onchange="previewImage(event)"
+                    required>
+            </div>
+            <div class="form-group">
+                <button  type="submit" >Tell me about the meal</button>
+            </div>
+        </form>
+    </div>
+    <div class="output-container" id="outputContainer" style="display: none;">
+        <img id="uploadedImage" src="#" alt="Uploaded Image">
+        <div id="outputText"></div>
+    </div>
+
+    
+</body>
+
+</html>
