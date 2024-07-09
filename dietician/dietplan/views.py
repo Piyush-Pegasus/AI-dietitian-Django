@@ -3,10 +3,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
-from datetime import datetime, timedelta
-import csv
-from pymongo import MongoClient
-import pandas as pd 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import os
