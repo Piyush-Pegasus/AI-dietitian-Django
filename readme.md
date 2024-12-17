@@ -1,15 +1,3 @@
-I can help generate a README file for your project. I will need to review the code and details from your repository to create a comprehensive README. Let's start by creating a plan to gather the necessary information.
-
-<plan>
-1. Retrieve the main code files and structure of the repository.
-2. Collect relevant details from the provided project description and the live website.
-3. Create a draft README file based on the gathered information.
-</plan>
-
-I will begin by retrieving the main code files and structure of your repository.It looks like the README.md file does not exist in the repository. I'll create a new one for you based on the information provided. Here's a draft for your README file:
-
----
-
 # AI Dietician
 
 **Django, Langchain, AWS, MySQL, RAG**
