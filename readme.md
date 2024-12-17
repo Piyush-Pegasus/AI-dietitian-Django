@@ -1,0 +1,98 @@
+I can help generate a README file for your project. I will need to review the code and details from your repository to create a comprehensive README. Let's start by creating a plan to gather the necessary information.
+
+<plan>
+1. Retrieve the main code files and structure of the repository.
+2. Collect relevant details from the provided project description and the live website.
+3. Create a draft README file based on the gathered information.
+</plan>
+
+I will begin by retrieving the main code files and structure of your repository.It looks like the README.md file does not exist in the repository. I'll create a new one for you based on the information provided. Here's a draft for your README file:
+
+---
+
+# AI Dietician
+
+**Django, Langchain, AWS, MySQL, RAG**
+
+## Overview
+
+AI Dietician is a Generative AI-based nutrition and wellness platform designed to offer personalized meal tracking, packaged food analysis, and customized diet planning. The project leverages advanced algorithms to provide tailored nutrition advice and recommendations.
+
+## Features
+
+- **Personalized Meal Tracking**: Track your meals and receive personalized insights.
+- **Packaged Food Analysis**: Analyze the nutritional content of packaged foods.
+- **Customized Diet Planning**: Get diet plans tailored to your specific needs.
+
+## Technologies Used
+
+- **Backend**: Django
+- **Database**: MySQL
+- **AI and Machine Learning**: Langchain, Google Gemini APIs, OllamaEmbeddings
+- **Deployment**: AWS EC2 instance
+
+## Live Demo
+
+Check out the live website: [AI Dietician](https://piyush8992.pythonanywhere.com/)
+
+## Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/Piyush-sri11/AI-dietitian-Django.git
+    cd AI-dietitian-Django
+    ```
+
+2. Create a virtual environment and activate it:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. Install the dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Apply the migrations:
+    ```bash
+    python manage.py migrate
+    ```
+
+5. Run the development server:
+    ```bash
+    python manage.py runserver
+    ```
+
+## Usage
+
+1. Open your web browser and go to `http://127.0.0.1:8000/`.
+2. Explore the features of the AI Dietician platform:
+    - Track your meals
+    - Analyze packaged foods
+    - Get customized diet plans
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch:
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+3. Make your changes and commit them:
+    ```bash
+    git commit -m 'Add some feature'
+    ```
+4. Push to the branch:
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+You can copy this content into a new README.md file in your repository. Let me know if you need any modifications!
